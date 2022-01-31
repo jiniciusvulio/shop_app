@@ -24,13 +24,13 @@ class Body extends StatelessWidget {
                 ?.copyWith(fontWeight: FontWeight.bold),
           ),
         ),
-        Categories(),
+        const Categories(),
         Expanded(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
             child: GridView.builder(
                 itemCount: products.length,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   mainAxisSpacing: kDefaultPadding,
                   crossAxisSpacing: kDefaultPadding,
