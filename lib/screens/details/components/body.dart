@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shop_app/constants.dart';
 import 'package:shop_app/models/product.dart';
 
+import 'add_to_cart.dart';
+import 'cart_counter.dart';
+import 'color_and_size.dart';
+import 'counter_with_fav_btn.dart';
+import 'description.dart';
 import 'product_title_with_image.dart';
 
 class Body extends StatelessWidget {
@@ -34,19 +40,14 @@ class Body extends StatelessWidget {
                     ),
                   ),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text("Color"),
-                      Row(
-                        children: [
-                          ColorDot(
-                            color: Color(0xFF356C95),
-                            isSelected: true,
-                          ),
-                          ColorDot(color: Color(0xFFF8C078)),
-                          ColorDot(color: Color(0xFFA29898)),
-                        ],
-                      )
+                      ColorAndSize(product: product),
+                      SizedBox(height: kDefaultPadding / 2),
+                      Description(product: product),
+                      SizedBox(height: kDefaultPadding / 2),
+                      CounterWithFavBtn(),
+                      SizedBox(height: kDefaultPadding / 2),
+                      AddToCart(product: product),
                     ],
                   ),
                 ),
@@ -55,33 +56,6 @@ class Body extends StatelessWidget {
             ),
           )
         ],
-      ),
-    );
-  }
-}
-
-class ColorDot extends StatelessWidget {
-  final Color color;
-  final bool isSelected;
-  const ColorDot({
-    Key? key,
-    required this.color,
-    this.isSelected = false,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(
-          top: kDefaultPadding / 4, right: kDefaultPadding / 2),
-      padding: const EdgeInsets.all(2.5),
-      height: 24,
-      width: 24,
-      decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          border: Border.all(color: isSelected ? color : Colors.transparent)),
-      child: DecoratedBox(
-        decoration: BoxDecoration(color: color, shape: BoxShape.circle),
       ),
     );
   }
